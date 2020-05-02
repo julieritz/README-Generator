@@ -1,10 +1,12 @@
 const fs = require("fs");
-const axios = require("axios");
+const githubApi = require("./utils/apiCall");
 const promptUser = require("./utils/promptUser");
+const generateBadge = require("./utils/generateBadge")
 const generateMarkdown = require("./utils/generateMarkdown")
 
 const questions = [
   {
+    // how to link api here?
     type: "input",
     message: "What is your GitHub user name?",
     name: "username"
@@ -70,8 +72,15 @@ function init() {
     .then(data => {
       console.log("Success! Check your files for your README.")
       console.log(data)
-      const markdown = generateMarkdown(data)
-      writeToFile("README.md", markdown)
+      githubApi.getAvatar(data.username)
+      .then(({avatar_url, email}) => {
+        data.avatar_url = avatar_url
+        data.email = email
+        console.log(data)
+        data.badge = generateBadge(data.license)
+        const markdown = generateMarkdown(data)
+        writeToFile("README.md", markdown)
+      })
     })
     .catch(err => {
       console.error(err)
