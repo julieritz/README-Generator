@@ -1,6 +1,8 @@
 function generateMarkdown(data) {
   return `
 # ${data.title}
+## Link
+${data.link}
 ## Description
 ${data.description}
 ## Table of Contents
@@ -10,14 +12,14 @@ ${data.description}
 
 * [License](#license)
 
-* [Contributing](#contributing)
+* [Contributors](#contributors)
 
 * [Tests](#tests)
 
 * [Questions](#questions)
-## Installation Requirements
+## Installation
 ${data.installation}
-## How to Use
+## Usage
 ${data.usage}
 ## License
 ${data.badge}
@@ -27,8 +29,8 @@ ${data.contributors}
 ${data.tests}
 ## Questions
 ${data.questions}
-![userimage](${data.avatar_url})
-Email: ${data.email}
+### ![userimage](${data.avatar_url})
+#### Email: ${data.email}
 `;
 }
 

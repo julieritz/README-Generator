@@ -18,6 +18,11 @@ const questions = [
   },
   {
     type: "input",
+    message: "What is the link to your repo or launched app?",
+    name: "link"
+  },
+  {
+    type: "input",
     message: "Write a description of the project:",
     name: "description"
   },
